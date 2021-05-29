@@ -4,7 +4,9 @@ option java_package = "com.crazy.proto";
 option java_outer_classname = "Practice";
 
 message Person {
-    optional  string name = 1;
+    optional string name = 1;
     optional int32 age = 2;
     optional string email = 3;
+
+
 }

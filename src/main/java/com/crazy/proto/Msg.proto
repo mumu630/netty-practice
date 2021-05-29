@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+option java_package = "com.crazy.proto";
+option java_outer_classname = "IMMsg";
+
+enum HeadType {
+    LOGIN_REQUEST = 0;
+    LOGIN_RESPONSE = 1;
+    LOGOUT_REQUEST = 2;
+    LOGOUT_RESPONSE = 3;
+    MESSAGE_REQUEST = 4;
+    MESSAGE_RESPONSE = 5;
+    MESSAGE_NOTIFICATION = 6;
+    KEEPALIVE_REQUEST = 7;
+    KEEPALIVE_RESPONSE = 8;
+}
+
+message LoginRequest {
+    string username = 3;
+    string password = 4;
+}
+
+message LoginResponse {
+    int32 code = 1;
+    string msg = 2;
+    string sid = 3;
+    string username = 4;
+}
+
+message LogoutRequest {
+    string sid = 1;
+}
+
+message LogoutResponse {
+    int32 code = 1;
+    string msg = 2;
+    string username = 3;
+}
+
+message MessageRequest {
+    string content = 1;
+    string sendSid = 2;
+    string receiveUsername = 3;
+}
+
+message MessageResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message MessageNotification {
+    uint64 receiveUsername = 1;
+    string content = 2;
+    string senderUsername = 3;
+}
+
+message MessageKeepRequest {
+    string sid = 1;
+    uint64 timestamp = 2;
+}
+
+message MessageKeepResponse {
+    int32 code = 1;
+    string msg = 2;
+}
+
+message IMMessage {
+    HeadType headType = 1;
+    LoginRequest loginRequest = 2;
+    LoginResponse loginResponse = 3;
+    LogoutRequest logoutRequest = 4;
+    LogoutResponse logoutResponse = 5;
+    MessageRequest messageRequest = 6;
+    MessageResponse messageResponse = 7;
+    MessageNotification messageNotification = 8;
+    MessageKeepRequest messageKeepRequest = 9;
+    MessageKeepResponse messageKeepResponse = 10;
+}
+
+
+
+
+
+
